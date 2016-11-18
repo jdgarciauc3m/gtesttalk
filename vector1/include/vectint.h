@@ -3,7 +3,7 @@
 
 #include <memory>
 
-namespace dcl {
+namespace dcl { // Dummy Container Library
 
 class vectint {
 public:
@@ -23,7 +23,6 @@ public:
   void resize(int n);
 
   friend std::ostream & operator<<(std::ostream & os, const vectint & v);
-  friend std::istream & operator>>(std::istream & is, vectint & v);
 
 private:
   int capacity_;
@@ -31,6 +30,6 @@ private:
   std::unique_ptr<int[]> buffer_;
 };
 
-}
+} // end dcl namespace
 
 #endif

@@ -15,16 +15,14 @@ vectint::vectint(const vectint & v) :
   size_{v.size_},
   buffer_{std::make_unique<int[]>(size_)}
 {
-  std::copy_n(v.buffer_.get(), v.size_,
-    buffer_.get());
+  std::copy_n(v.buffer_.get(), v.size_, buffer_.get());
 }
 
 vectint & vectint::operator=(const vectint & v) {
   buffer_ = std::make_unique<int[]>(v.size_);
   capacity_ = v.capacity_;
   size_ = v.size_;
-  std::copy_n(v.buffer_.get(), v.size_,
-    buffer_.get());
+  std::copy_n(v.buffer_.get(), v.size_, buffer_.get());
   return *this;
 }
 
