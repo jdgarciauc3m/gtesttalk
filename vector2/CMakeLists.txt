@@ -11,9 +11,9 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}")
 set(WARNFLAGS "-Wall -Wextra -Wno-deprecated -Werror -pedantic -pedantic-errors")
 
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-list(APPEND CMAKE_CXX_FLAGS "-std=c++14 -stdlib=libstdc++ ${WARNFLAGS}")
+list(APPEND CMAKE_CXX_FLAGS "-std=c++14 -stdlib=libstdc++ ${WARNFLAGS} -pthread")
 elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-list(APPEND CMAKE_CXX_FLAGS "${WARNFLAGS}")
+list(APPEND CMAKE_CXX_FLAGS "${WARNFLAGS} -pthread")
 else()
 message(FATAL_ERROR "Unsupported compiler")
 endif()
@@ -21,3 +21,6 @@ endif()
 #Process subdirectories
 add_subdirectory(src)
 add_subdirectory(samples)
+
+enable_testing()
+add_subdirectory(utest)
