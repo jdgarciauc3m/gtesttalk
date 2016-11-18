@@ -1,10 +1,18 @@
 #include "vectint.h"
 #include <gtest/gtest.h>
 
-TEST(vectint_copy, copy_construct)
-{
+class vectint_copy : public ::testing::Test {
+protected:
+  vectint_copy() {
+    v[0] = 1; 
+    v[3] = 42;
+  }
+
   dcl::vectint v{4};
-  v[0] = 1; v[3] = 42;
+};
+
+TEST_F(vectint_copy, copy_construct)
+{
   dcl::vectint w{v};
   EXPECT_EQ(4, w.size());
   EXPECT_EQ(4, w.capacity());
@@ -14,10 +22,8 @@ TEST(vectint_copy, copy_construct)
   EXPECT_EQ(42, w[3]);
 }
 
-TEST(vectint_copy, copy_assign)
+TEST_F(vectint_copy, copy_assign)
 {
-  dcl::vectint v{4};
-  v[0] = 1; v[3] = 42;
   dcl::vectint w{10};
   w = v;
   EXPECT_EQ(4, w.size());
